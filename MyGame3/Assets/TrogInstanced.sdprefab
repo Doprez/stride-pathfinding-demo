@@ -1,0 +1,30 @@
+!PrefabAsset
+Id: 3cd70cd2-e1b5-4c53-95eb-ade50abc0d25
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! b04a8650-bd53-40e8-b1b2-450227857202
+    Parts:
+        -   Entity:
+                Id: b04a8650-bd53-40e8-b1b2-450227857202
+                Name: TrogInstanced
+                Components:
+                    be06a7fa410efda39e14541d4930103a: !TransformComponent
+                        Id: 6810bae5-9404-43a8-a422-3564a69abca0
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    bf4b2fa7c4229efd1741470b3d2190e8: !PathfindingDemo.Controllers.InstancedUnitController,PathfindingDemo
+                        Id: 104549e9-e943-4ee4-8894-f0d19109b82a
+                        Pathfinder: null
+                        InstanceComponent: null
+                    5199c0c650b3700d2373670e2888313e: !InstanceComponent
+                        Id: b41dc890-9274-44d2-a467-1cbda999dd12
+                        Master: null
+                    06e8ffcdf4a798cf36272f8b788d67e9: !Pathfinder
+                        Id: 37e95aca-59f8-43c2-888f-cac7a067e4f2
+                        TargetPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+                        MovementSpeed: 10.0
+                        NavGroupName: Unit

@@ -1,0 +1,16 @@
+!Model
+Id: fd5e0df6-c54f-42d4-8e9e-3e9766bc8642
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Source: !file ../Resources/Models/Trogladyte.fbx
+Skeleton: null
+PivotPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+ScaleImport: 0.1
+Materials:
+    79462200c816e03cb4f8c0cc96262112:
+        Name: Material
+        MaterialInstance:
+            Material: 4971a466-d6ca-4879-8f48-cf04fb86f5d5:Material
+Modifiers: {}
+~SourceHashes:
+    321c193c0d4cfecab463bff2d34532e6~../Resources/Models/Trogladyte.fbx: 720e0611776d9860499fec0a501de6ef
