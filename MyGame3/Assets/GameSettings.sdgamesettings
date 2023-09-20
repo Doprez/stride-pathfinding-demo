@@ -2,7 +2,7 @@
 Id: def2abe5-1a66-414f-9893-b27f658b4d57
 SerializedVersion: {Stride: 3.1.0.1}
 Tags: []
-DefaultScene: 0c63eb22-6fbb-44ae-8f90-102bbdb01c68:InstancedPathfinding
+DefaultScene: 9f70cbd0-7fdd-4d6b-be64-e52ce92ec484:ECSScene
 GraphicsCompositor: b89f7383-ec63-4fa7-9849-2c47212cff78:GraphicsCompositor
 Defaults:
     - !Stride.Audio.AudioEngineSettings,Stride.Audio
@@ -54,5 +54,5 @@ PlatformFilters:
     - ^Mali\-4
     - ^Mali\-T6
     - ^Mali\-T7
-SplashScreenTexture: d26edb11-10bd-403c-b3c2-9c7fcccf25e5:StrideDefaultSplashScreen
+SplashScreenTexture: null
 SplashScreenColor: {R: 0, G: 0, B: 0, A: 255}

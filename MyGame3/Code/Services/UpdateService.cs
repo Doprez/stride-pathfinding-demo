@@ -29,8 +29,9 @@ public class UpdateService : SyncScript
 	{
 		if (CurrentFrame > FrameToStartUpdating)
 		{
-			DebugText.Print($"Units: {UnitCount} FPS: {Game.DrawTime.FramePerSecond}", new Int2(50, 50));
+			//DebugText.Print($"Units: {UnitCount} FPS: {Game.DrawTime.FramePerSecond}", new Int2(50, 50));
 			UpdateBatch();
+			//UpdateAll();
 		}
 		else
 		{
@@ -56,6 +57,15 @@ public class UpdateService : SyncScript
 		else
 		{
 			_currentBatch += Math.Min(MaxBatch, UnitCount - _currentBatch);
+		}
+	}
+
+	private void UpdateAll()
+	{
+		// Update each controller in the batch
+		foreach (var controller in _updatables)
+		{
+			controller.Step();
 		}
 	}
 

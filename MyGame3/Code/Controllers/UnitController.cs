@@ -7,7 +7,6 @@ namespace PathfindingDemo.Controllers;
 public class UnitController : StartupScript, IUpdateController
 {
 	public Pathfinder Pathfinder { get; set; }
-	public InstanceComponent InstanceComponent { get; set; }
 
 	private Random _random = new Random();
 	private float _elapsedtime = 0;

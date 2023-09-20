@@ -1,0 +1,33 @@
+!PrefabAsset
+Id: bab4ba60-5e7c-4787-a594-65bb49bf441c
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! 4ba83d59-6c28-4a68-88df-363de0400f56
+    Parts:
+        -   Entity:
+                Id: 4ba83d59-6c28-4a68-88df-363de0400f56
+                Name: ECSAgent
+                Components:
+                    df0dd4da9484e15f0de744b7ee940c12: !TransformComponent
+                        Id: 416f057d-2229-4e4f-a44e-4e960bbccd04
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2fc65b167a502953a0aa436a6f9a863: !PathFindingComponent
+                        Id: fba3c149-9e8c-40a6-a631-401d748a234c
+                        Pathfinder: ref!! b35755cd-99d6-48f0-baff-16ea7660ed75
+                    1569a7e1783050d9e7df7cca19d3ea20: !Pathfinder
+                        Id: b35755cd-99d6-48f0-baff-16ea7660ed75
+                        TargetPosition: {X: 0.0, Y: 0.0, Z: 0.0}
+                        MovementSpeed: 10.0
+                        NavGroupName: Unit
+                    9ca2eca257877350e44f9912ef40aa92: !PathfindingDemo.Code.InitializeInstanceMesh,PathfindingDemo
+                        Id: 997df15f-2d44-4f26-9cfd-84f9387a2dee
+                        InstanceComponent: ref!! 43b5abab-2780-4900-81a5-b2516535e321
+                        InstancedModelName: Trogladyte
+                    8bffa2bda27352a3c2693db25a1a7d65: !InstanceComponent
+                        Id: 43b5abab-2780-4900-81a5-b2516535e321
+                        Master: null
