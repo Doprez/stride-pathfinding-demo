@@ -19,6 +19,7 @@ public class PathFindingProcessor : EntityProcessor<PathFindingComponent>
 	{
 		var components = ComponentDatas.Values;
 		UpdateAll(components, time);
+		//UpdateBatch(components, time);
 	}
 
 	private void UpdateAll(Dictionary<PathFindingComponent, PathFindingComponent>.ValueCollection components, GameTime time)
