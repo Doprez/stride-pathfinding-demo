@@ -1,5 +1,5 @@
 # stride-pathfinding-demo
-A demo of pathfinding for 10,000 entities with instanced models!
+~A demo of pathfinding for 10,000 entities with instanced models!~ Now 20,000 cubes with full multithreading!
 
 Disclaimer: My hardware is fairly high end, I have not tested everywhere! If you are having issues please lower the spawn count by changing the below settings.
 ![image](https://github.com/Doprez/stride-pathfinding-demo/assets/73259914/a3914cde-194e-4fe7-bfd7-32bbb8fa3f4c)
