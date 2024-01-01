@@ -54,7 +54,7 @@ Hierarchy:
                         Children: {}
                     4aae4478729db7765886f54defb48178: !ModelComponent
                         Id: 2d07068f-e772-425a-920d-4a9b5d260231
-                        Model: fd5e0df6-c54f-42d4-8e9e-3e9766bc8642:Trogladyte
+                        Model: 7da34022-1e6a-4bba-9e87-39a4f10ebbfa:Cube
                         Materials: {}
                     e6adef1fbf2084e085a46dc66e1accdd: !InstancingComponent
                         Id: c81579df-7a9d-4cd7-bed5-6d0a79828908
@@ -74,7 +74,7 @@ Hierarchy:
                         Type: !LightDirectional
                             Color: !ColorRgbProvider
                                 Value: {R: 1.0, G: 1.0, B: 1.0}
-                            Shadow:
+                            Shadow: !LightDirectionalShadowMap
                                 Enabled: true
                                 Filter: !LightShadowMapFilterTypePcf
                                     FilterSize: Filter5x5
@@ -138,7 +138,7 @@ Hierarchy:
                     a0e460d17bbe792d517fba5421996995: !PathfindingDemo.Code.CreatePrefabAtRuntime,PathfindingDemo
                         Id: 277f30aa-9234-414b-981b-94868cfa13e5
                         PrefabToSpawn: bab4ba60-5e7c-4787-a594-65bb49bf441c:ECSAgent
-                        EntitiesToSpawn: 10000
+                        EntitiesToSpawn: 20000
                         AreaToSpawnIn: {X: 100.0, Y: 0.0, Z: 100.0}
                     838b8cb1cec8ac76ed0b9a7adc9472b1: !PathfindingDemo.GameProfiler,PathfindingDemo
                         Id: 4206beeb-e90d-48e7-ae5b-6848f413407e

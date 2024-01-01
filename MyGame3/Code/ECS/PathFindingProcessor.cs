@@ -1,7 +1,8 @@
 ﻿using Stride.Core.Annotations;
 using System.Collections.Generic;
 using System;
-using System.Linq;
+using Stride.Core.Threading;
+using PathfindingDemo.Code.Commands;
 
 namespace PathfindingDemo.Code.ECS;
 public class PathFindingProcessor : EntityProcessor<PathFindingComponent>
@@ -10,58 +11,42 @@ public class PathFindingProcessor : EntityProcessor<PathFindingComponent>
 
 	private readonly Random _random = new();
 	private float _elapsedTime = 0;
-
-	private int _count => ComponentDatas.Values.Count;
-	private int _currentBatch = 0;
-	private int _maxBatch = 10000;
+	 
+	private List<PathFindingComponent> _components = new();
+	private readonly ConcurrentCollector<ICommand> _commands = new();
 
 	public override void Update(GameTime time)
 	{
-		var components = ComponentDatas.Values;
-		UpdateAll(components, time);
-		//UpdateBatch(components, time);
+		UpdateAgents(time);
 	}
 
-	private void UpdateAll(Dictionary<PathFindingComponent, PathFindingComponent>.ValueCollection components, GameTime time)
+	private void UpdateAgents(GameTime time)
 	{
-		foreach (var component in ComponentDatas.Values)
+		Dispatcher.For(0, _components.Count, i =>
 		{
-			component.Pathfinder.Move();
-			component.Pathfinder.Rotate();
-			DelayedWaypointChange(component, time);
-		}
-	}
+			_components[i].Pathfinder.Move();
+			_components[i].Pathfinder.Rotate();
+			DelayedWaypointChange(_components[i], time);
+		});
 
-	private void UpdateBatch(Dictionary<PathFindingComponent, PathFindingComponent>.ValueCollection components, GameTime time)
-	{
-		// Get the next batch of controllers
-		var batch = components.ToList().GetRange(_currentBatch, Math.Min(_maxBatch, _count - _currentBatch));
-
-		// Update each controller in the batch
-		foreach (var component in batch)
+		_commands.Close();
+		for (var i = 0; i < _commands.Count; i++)
 		{
-			component.Pathfinder.Move();
-			component.Pathfinder.Rotate();
-			DelayedWaypointChange(component, time);
+			_commands[i].Execute();
 		}
+		_commands.Clear(true);
 
-		if (_currentBatch >= _count)
-		{
-			_currentBatch = 0;
-		}
-		else
-		{
-			_currentBatch += Math.Min(_maxBatch, _count - _currentBatch);
-		}
-	}
-
-	private void UpdateBatch(PathFindingComponent[] components, GameTime time)
-	{
+		//for(int i = 0; i < _count; i++)
+		//{
+		//	_components[i].Pathfinder.Move();
+		//	_components[i].Pathfinder.Rotate();
+		//	DelayedWaypointChange(_components[i], time);
+		//}
 	}
 
 	protected override void OnEntityComponentAdding(Entity entity, [NotNull] PathFindingComponent component, [NotNull] PathFindingComponent data)
 	{
-		base.OnEntityComponentAdding(entity, component, data);
+		_components.Add(component);
 	}
 
 	/// <summary>
@@ -71,12 +56,11 @@ public class PathFindingProcessor : EntityProcessor<PathFindingComponent>
 	{
 		_elapsedTime += (float)time.Elapsed.TotalSeconds;
 
-		if (_elapsedTime >= 1f)
+		if (_elapsedTime >= 1f && !component.Pathfinder.HasPath)
 		{
-			var newWaypoint = new Vector3(_random.Next(0, 100), 0, _random.Next(0, 100));
-			component.Pathfinder.SetWaypoint(newWaypoint);
+			var newWaypoint = new Vector3(Random.Shared.Next(-100, 100), 0, Random.Shared.Next(-100, 100));
+			_commands.Add(new ChangeWayPointCommand(component, newWaypoint));
 			_elapsedTime = 0;
 		}
 	}
-
 }
